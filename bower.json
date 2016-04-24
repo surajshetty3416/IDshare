@@ -1,0 +1,16 @@
+{
+  "name": "IDshare",
+  "author": "Suraj Shetty <surajshetty3416@gmail.com>",
+  "private": "true",
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "~1.4.8",
+    "ngCordova": "^0.1.26-alpha",
+    "angular-resource": "~1.4.8",
+    "ionic": "~1.2.1",
+    "angularfire": "^1.2.0"
+  },
+  "resolutions": {
+    "angular": "1.4.8"
+  }
+}
