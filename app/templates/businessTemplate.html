@@ -1,0 +1,15 @@
+<ion-view title="Business ID Template">
+  <ion-content class="has-header">
+    <div class="card list">
+      <div class="item item-input image-input" >
+        <img ng-src="{{idData.img}}" ng-click="getImage()">
+          <label class="item-input">
+            <input type="text" placeholder="Name" ng-model="idData.name">
+          </label>
+      </div>
+      <label class="item item-input">
+        <textarea ng-model="idData.add" rows="2" placeholder="Enter your Address"></textarea>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

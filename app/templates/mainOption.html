@@ -3,13 +3,23 @@
     <div class="button-container">
           <ul class="list">
             <li class="item">
-              <button class="button button-large button-royal" id="giveButton">
-                <i class="icon-left ion-home" ></i> Give ID
+              <button class="button button-large button-royal" id="giveButton" ng-click="scanQR()">
+                <i class="icon-left ion-home" ></i> Get ID
               </button>
             </li>
             <li class="item">
-              <button class="button button-large button-balanced" id="getButton" ui-sref="createId">
-              <i class="icon-left ion-android-contact" ></i> Get ID
+              <button class="button button-large button-balanced" id="getButton" ui-sref="giveId">
+              <i class="icon-left ion-android-contact" ></i> Give ID
+              </button>
+            </li>
+            <li class="item">
+              <button class="button button-assertive" id="createId" ui-sref="createId">
+                <i class="icon-left ion-android-contact"></i> Create/EditId
+              </button>
+            </li>
+            <li class="item">
+              <button class="button button-assertive" id="viewId" ui-sref="viewId">
+                <i class="icon-left ion-android-contact"></i> View Scanned IDs
               </button>
             </li>
           </ul>

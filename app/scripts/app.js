@@ -6,38 +6,62 @@
  */
 
 
-angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource'])
+angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'firebase', 'ja.qr'])
 
-  .run(function($ionicPlatform) {
+  .run(function ($ionicPlatform, $rootScope ) {
 
-    $ionicPlatform.ready(function() {
-      // save to use plugins here
+    $ionicPlatform.ready(function () {
+
+       $rootScope.options = {
+          maximumImagesCount: 1,
+          width: 300,
+          height: 300,
+          quality: 70
+        };
     });
 
-    // add possible global event handlers here
 
   })
 
-  .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
-    // register $http interceptors, if any. e.g.
-    // $httpProvider.interceptors.push('interceptor-name');
-
-    // Application routing
+  .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('app', {
-        url: '/app',
+      .state('mainOption', {
+        url: '/mainOption',
         templateUrl: 'templates/mainOption.html',
         controller: 'MainOptionController'
+      })
+      .state('giveId', {
+        url: '/giveId',
+        templateUrl: 'templates/giveId.html',
+        controller: 'giveIdController'
       })
       .state('createId', {
         url: '/createId',
         templateUrl: 'templates/createId.html',
         controller: 'createIdController'
+      })
+      .state('friendsRelatives', {
+        url: '/friendsRelatives',
+        templateUrl: 'templates/friendsRelativesTemplate.html',
+        controller: 'friendsRelativesTemplateController'
+      })
+      .state('social', {
+        url: '/social',
+        templateUrl: 'templates/socialTemplate.html',
+        controller: 'socialTemplateController'
+      })
+      .state('business', {
+        url: '/business',
+        templateUrl: 'templates/businessTemplate.html',
+        controller: 'businessTemplateController'
+      })
+      .state('custom', {
+        url: '/custom',
+        templateUrl: 'templates/customTemplate.html',
+        controller: 'customTemplateController'
       });
 
-
-    // redirects to default route for undefined routes
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/mainOption');
   });
 
 

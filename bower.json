@@ -8,7 +8,10 @@
     "ngCordova": "^0.1.26-alpha",
     "angular-resource": "~1.4.8",
     "ionic": "~1.2.1",
-    "angularfire": "^1.2.0"
+    "angularfire": "^1.2.0",
+    "ngstorage": "^0.3.10",
+    "qrcode.js": "qrcode#^1.0.2",
+    "angular-qr": "^0.2.0"
   },
   "resolutions": {
     "angular": "1.4.8"

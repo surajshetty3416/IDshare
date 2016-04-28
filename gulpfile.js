@@ -68,7 +68,7 @@ gulp.task('styles', function() {
 
   var options = build ? { style: 'compressed' } : { style: 'expanded' };
 
-  var sassStream = gulp.src('app/styles/main.scss')
+  var sassStream = gulp.src('app/styles/main.sass')
     .pipe(plugins.sass(options))
     .on('error', function(err) {
       console.log('err: ', err);
@@ -291,6 +291,7 @@ gulp.task('ripple', ['scripts', 'styles', 'watchers'], function() {
 // start watchers
 gulp.task('watchers', function() {
   plugins.livereload.listen();
+  gulp.watch('app/styles/**/*.sass', ['styles']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/fonts/**', ['fonts']);
   gulp.watch('app/icons/**', ['iconfont']);

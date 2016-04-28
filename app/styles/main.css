@@ -1,25 +1,23 @@
-/************************************
- *
- *  Main Styles to compile. Here only @imports!
- *
- ************************************/
-/**
- * Define variables
- */
-/**
- * Import fonts either via @import url (e.g. from Googlee Fonts)
- * or via @font-face when font files are stored locally in /app/fonts
- */
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   src: url(../fonts/Roboto-Light.ttf) format("truetype");
   font-weight: 300;
   font-style: normal; }
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   src: url(../fonts/Roboto-Bold.ttf) format("truetype");
   font-weight: 700;
   font-style: normal; }
+.imageOverlay {
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100%;
+  vertical-align: middle; }
+
 .button-container {
   text-align: center;
   margin: 0 auto;

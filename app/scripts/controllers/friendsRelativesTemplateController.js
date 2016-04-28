@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('IDshare')
-  .controller('createIdController', function($scope) {
+  .controller('friendsRelativesTemplateController', function($scope) {
 
     // do something with $scope
 
