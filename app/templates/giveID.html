@@ -1,19 +1,26 @@
-<!--<ion-view title="Your ID">-->
-  <!--<ion-content class="has-header">-->
-    <!--<div class="qrContainer">-->
-      <!--<qr ng-if="show" type-number="14" correction-level="'Auto'" size="200" input-mode="'Auto'" text="data" image="true"></qr>-->
-    <!--</div>-->
-  <!--</ion-content>-->
-<!--</ion-view>-->
-
-
-<ion-view title="Create IDs">
+<ion-view title="Give IDs">
   <ion-content class="has-header">
     <div class="list">
-      <a class="item not-active" ui-sref="friendsRelatives" >Friends/Relative ID</a>
-      <a class="item" ui-sref="social">Social ID</a>
-      <a class="item" ui-sref="business">Business ID</a>
-      <a class="item" ui-sref="custom">Custom ID</a>
+      <a class="item" ng-class="{notActive:!fr.status}" ng-click="openModal(fr.key)" >Friends/Relative ID</a>
+      <a class="item" ng-class="{notActive:!social.status}" ng-click="openModal(social.key)">Social ID</a>
+      <a class="item" ng-class="{notActive:!business.status}" ng-click="openModal(business.key)">Business ID</a>
+      <a class="item" ng-class="{notActive:!custom.status}" ng-click="openModal(custom.key)">Custom ID</a>
     </div>
+
   </ion-content>
 </ion-view>
+
+<script id="qrView.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Scan This</h1>
+      <button class="button button-clear button-assertive" align="right" ng-click="closeModal()">Done</button>
+    </ion-header-bar>
+    <ion-content>
+      <div class="qrContainer">
+        <qr ng-if="show" type-number="8" correction-level="'Auto'" size="200" input-mode="'Auto'" text="qrData"
+            image="true"></qr>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

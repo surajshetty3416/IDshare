@@ -1,0 +1,102 @@
+<ion-view title="View IDs">
+  <ion-content class="has-header">
+    <ion-list>
+      <div ng-repeat="Id in Ids">
+        <ion-item class="item-stable" ng-click="toggleId(Id)" ng-class="{active: isIdShown(Id)}">
+          <i ng-if="Id.items.length>0" class="icon" ng-class="isIdShown(Id) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{Id.name}}
+          <span class="badge badge-balanced" ng-if="Id.items.length>0">{{Id.items.length}}</span>
+        </ion-item>
+        <a class="item  item-accordion" ng-repeat="item in Id.items" ng-show="isIdShown(Id)" ng-click="show(item.key)">
+          <h2>{{item.name || upperCase}}</h2>
+
+          <p>{{item.mob || item.facebookID || item.email}}</p>
+        </a>
+      </div>
+    </ion-list>
+
+
+  </ion-content>
+</ion-view>
+
+
+<script id="viewSavedId.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">ID</h1>
+      <button class="button button-clear button-assertive" align="right" ng-click="closeModal()">Done</button>
+    </ion-header-bar>
+    <ion-content>
+      <div class="card list">
+        <div class="item item-input padding image-input">
+          <img ng-if="data.img" ng-src="{{data.img}}">
+          <label class="item no-border">
+            <div class="row"><h2>{{data.name}}</h2></div>
+            <div class="row" ng-if="data.profession">
+              <i class="ion-briefcase padding-right"></i>
+
+              <p>{{data.profession}}</p>
+            </div>
+            <div class="row" ng-if="data.status">
+              <i class="ion-chatbubble whatsapp padding-right"></i>
+
+              <p>{{data.status}}</p>
+            </div>
+          </label>
+        </div>
+        <div class="">
+          <div class="item item-input no-border" ng-if="data.email">
+            <i class="ion-email  gmail col-10"></i>
+            <em>{{data.email}}</em>
+          </div>
+          <div class="item item-input no-border" ng-if="data.mob || data.officeNo">
+            <i class="ion-android-call whatsapp col-10"></i>
+            <em>{{data.mob}}</em><br>
+            <em>{{data.officeNo}}</em>
+          </div>
+          <div class="item item-input no-border" ng-if="data.dob">
+            <i class="ion-calendar calendar col-10"></i>
+            <em>{{data.dob | date:'mediumDate'}}</em>
+          </div>
+          <div class="item item-input no-border" ng-if="data.bloodGroup">
+            <i class="ion-waterdrop bloodgroup col-10"></i>
+            <em>{{data.bloodGroup}}</em>
+          </div>
+          <div class="item item-input no-border content" ng-if="data.add">
+            <i class="ion-location large location col-10"> </i>
+
+            <p class="normal-wrap">{{data.add}}</p>
+          </div>
+          <div class="item item-input no-border content" ng-if="data.officeAdd">
+            <i class="ion-location large location col-10"> </i>
+
+            <p class="normal-wrap">{{data.officeAdd}}</p>
+          </div>
+        </div>
+        <div class="padding">
+          <div class="text-center"><h5>Social Links</h5>
+            <a ng-if="data.linkedin" ng-href="{{data.linkedin}}" class="button linkedin margin"><i
+              class="ion-social-linkedin large"></i>
+            </a>
+            <a ng-if="data.twitterID" ng-href="http://www.twitter.com/{{data.twitterID}}" class="button twitter margin"><i
+              class="ion-social-twitter large"></i>
+            </a>
+            <a ng-if="data.facebookID" ng-href="http://www.facebook.com/{{data.facebookID}}"
+               class="button facebook margin"><i class="ion-social-facebook large"></i>
+            </a>
+            <a ng-if="data.instagramID" ng-href="http://www.instagram.com/{{data.instagramID}}"
+               class="button instagram margin"><i class="ion-social-instagram large"></i>
+            </a>
+            <a ng-if="data.youtubeID" ng-href="http://www.youtube.com/{{data.youtubeID}}" class="button youtube margin"><i
+              class="ion-social-youtube large"></i>
+            </a>
+            <a ng-if="data.githubID" ng-href="http://www.github.com/{{data.githubID}}" class="button github margin"><i
+              class="ion-social-github large"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

@@ -1,15 +1,56 @@
 <ion-view title="Business ID Template">
   <ion-content class="has-header">
-    <div class="card list">
-      <div class="item item-input image-input" >
-        <img ng-src="{{idData.img}}" ng-click="getImage()">
-          <label class="item-input">
-            <input type="text" placeholder="Name" ng-model="idData.name">
-          </label>
+    <form action="">
+    <div class="list">
+      <div class="item item-input padding image-input">
+        <img ng-src="{{data.img}}" ng-click="getImage()">
+        <label class="item-input">
+          <input type="text" placeholder="Name *" ng-model="data.name" required>
+        </label>
       </div>
       <label class="item item-input">
-        <textarea ng-model="idData.add" rows="2" placeholder="Enter your Address"></textarea>
+        <i class="ion-location large location col-10"></i>
+          <textarea class="row" ng-model="data.officeAdd" rows="2" placeholder="Office Address"></textarea>
       </label>
+      <label class="item item-input">
+        <i class="ion-briefcase  col-10"></i>
+        <input type="text" placeholder="Profession * " ng-model="data.profession" value="" list="Profession" required />
+        <datalist id="Profession">
+          <option value="{{profession.value}}" ng-repeat="profession in professions"></option>
+        </datalist>
+      </label>
+      <label class="item item-input">
+        <i class="ion-email  gmail col-10"></i>
+        <input type="email" placeholder="Email * " ng-model="data.email" >
+      </label>
+      <label class="item item-input">
+        <i class="ion-android-phone-portrait large col-10"></i>
+        <div class="col">
+          <input class="row" type="tel" placeholder="Mobile No." ng-model="data.mob">
+          <input class="row" type="tel" placeholder="Office No." ng-model="data.officeNo">
+        </div>
+      </label>
+      <label class="item item-input">
+        <i class="ion-social-linkedin large linkedin col-10"></i>
+         <input type="text" placeholder="LinkedIn Url" ng-model="data.linkedin">
+      </label>
+      <label class="item item-input">
+        <i class="ion-social-github github instagram col-10"></i>
+        github.com/
+        <input type="text" placeholder="Github ID" ng-model="data.githubID">
+      </label>
+      <label class="item item-input">
+        <i class="ion-earth  whatsapp col-10"></i>
+        <input type="text" placeholder="Website" ng-model="data.website">
+      </label>
+      <div align="right" class="padding">
+        <button type="submit" class="button button-outline button-balanced button-small"
+                align="right" ng-click="save(false)">Save
+        </button>
+        <button type="submit" class="button button-outline button-energized button-small" align="right" ng-click="save(true)">Save and Upload
+        </button>
+      </div>
     </div>
+    </form>
   </ion-content>
 </ion-view>

@@ -70,7 +70,9 @@
     {
       "locator": "https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git",
       "id": "cordova-plugin-x-toast"
-    }
+    },
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-contacts"
   ],
   "cordovaPlatforms": [
     "android"

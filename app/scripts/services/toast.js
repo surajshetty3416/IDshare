@@ -1,12 +1,14 @@
+'use strict';
+
 angular.module('IDshare')
 
   .factory('toast', function($cordovaToast) {
     return {
       show: function (msg) {
         $cordovaToast.showShortBottom(msg).then(function (success) {
-          // success
+         console.log(success);
         }, function (error) {
-          // error
+          console.log(error);
         });
       }
     };

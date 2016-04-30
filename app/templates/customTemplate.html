@@ -1,15 +1,39 @@
 <ion-view title="Custom ID Template">
   <ion-content class="has-header">
+    <form action="">
     <div class="list">
+      <div class="item item-input image-input" >
+        <img ng-src="{{data.img}}" ng-click="getImage()">
+        <label class="item-input">
+          <input type="text" placeholder="Name" ng-model="data.name" required>
+        </label>
+      </div>
       <label class="item item-input">
-        <input type="text" placeholder="First Name">
+        <i class="ion-location col-10"></i>
+        <textarea placeholder="Address" rows="1" ng-model="data.add"></textarea>
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Last Name">
+        <i class="ion-android-phone-portrait col-10"></i>
+        <input type="tel" placeholder="Mobile No." ng-model="data.mob" required>
+      </label>
+      <label class="item item-input">
+        <div class="col-20"> DOB</div>
+        <input type="date" placeholder="Date Of Birth" ng-model="data.dob">
+      </label>
+      <label class="item item-input">
+        <i class="ion-social-facebook col-10"></i>
+        https://facebook.com/
+        <input type="text" placeholder="Facebook ID" ng-model="data.facebookID">
       </label>
       <label class="item item-input">
         <textarea placeholder="Comments"></textarea>
       </label>
+      <div align="right" class="padding">
+        <button type="button" class="button button-outline button-small button-balanced " ng-click="save(false)">Save</button>
+        <button type="submit" class="button button-outline button-small button-energized " align="right" ng-click="save(true)">Save and Upload
+        </button>
+      </div>
     </div>
+    </form>
   </ion-content>
 </ion-view>

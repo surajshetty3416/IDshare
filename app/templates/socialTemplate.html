@@ -1,15 +1,50 @@
 <ion-view title="Social ID Template">
   <ion-content class="has-header">
     <div class="list">
+      <div class="item item-input image-input" >
+        <img ng-src="{{data.img}}" ng-click="getImage()">
+        <label class="item-input">
+          <div>
+            <div class="row"><input type="text" placeholder="Name" ng-model="data.name" required></div>
+            <div class="row"><i class="ion-chatbubble whatsapp col-10"></i><input type="text" placeholder="Status" ng-model="data.status"></div>
+          </div>
+
+        </label>
+      </div>
       <label class="item item-input">
-        <input type="text" placeholder="First Name">
+        <i class="ion-social-whatsapp whatsapp col-10"></i>
+        <input type="tel" placeholder="Mobile No." ng-model="data.mob">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Last Name">
+        <i class="ion-social-facebook facebook col-10"></i>
+        facebook.com/
+        <input type="text" placeholder="Facebook ID" ng-model="data.facebookID" required>
       </label>
       <label class="item item-input">
-        <textarea placeholder="Comments"></textarea>
+        <i class="ion-social-twitter twitter col-10"></i>
+        twitter.com/
+        <input type="text" placeholder="Twitter ID" ng-model="data.twitterID">
       </label>
+      <label class="item item-input">
+        <i class="ion-social-github github col-10"></i>
+        github.com/
+        <input type="text" placeholder="Github ID" ng-model="data.githubID">
+      </label>
+      <label class="item item-input">
+        <i class="ion-social-youtube youtube col-10"></i>
+        youtube.com/
+        <input type="text" placeholder="Youtube Channel" ng-model="data.youtubeID">
+      </label>
+      <label class="item item-input">
+        <i class="ion-social-instagram instagram col-10"></i>
+        instagram.com/
+        <input type="text" placeholder="Instagram ID" ng-model="data.instagramID">
+      </label>
+      <div align="right" class="padding">
+        <button type="submit" class="button button-outline button-balanced button-small" align="right" ng-click="save(false)">Save</button>
+        <button type="submit" class="button button-outline button-energized button-small" align="right" ng-click="save(true)">Save and Upload
+        </button>
+      </div>
     </div>
   </ion-content>
 </ion-view>

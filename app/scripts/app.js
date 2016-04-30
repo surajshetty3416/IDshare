@@ -8,7 +8,7 @@
 
 angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'firebase', 'ja.qr'])
 
-  .run(function ($ionicPlatform, $rootScope ) {
+  .run(function ($ionicPlatform, $rootScope ,$localStorage) {
 
     $ionicPlatform.ready(function () {
 
@@ -18,6 +18,10 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
           height: 300,
           quality: 70
         };
+      $localStorage.$default({
+        scannedIds:{},
+        createdIds:{}
+      })
     });
 
 
@@ -33,12 +37,20 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
       .state('giveId', {
         url: '/giveId',
         templateUrl: 'templates/giveId.html',
-        controller: 'giveIdController'
+        controller: 'giveIdController',
+        cache:false
       })
       .state('createId', {
         url: '/createId',
         templateUrl: 'templates/createId.html',
-        controller: 'createIdController'
+        controller: 'createIdController',
+        cache:false
+      })
+      .state('viewId', {
+        url: '/viewId',
+        templateUrl: 'templates/viewId.html',
+        controller: 'viewIdController',
+        cache:false
       })
       .state('friendsRelatives', {
         url: '/friendsRelatives',
