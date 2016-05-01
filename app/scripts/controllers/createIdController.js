@@ -4,7 +4,7 @@ angular.module('IDshare')
   .controller('createIdController', function ($scope, $localStorage) {
     $scope.status = {};
     if ($localStorage.createdIds) {
-      if ($localStorage.createdIds != []) {
+      if ($localStorage.createdIds != {}) {
         Object.keys($localStorage.createdIds).forEach(function (key) {
           if ($localStorage.createdIds[key].type == 'fr') {
             $scope.status.fr = true
@@ -18,11 +18,7 @@ angular.module('IDshare')
           if ($localStorage.createdIds[key].type == 'custom') {
             $scope.status.custom = true
           }
-        })
+        });
       }
     }
-    else {
-      $localStorage.createdIds = [];
-    }
-
   });

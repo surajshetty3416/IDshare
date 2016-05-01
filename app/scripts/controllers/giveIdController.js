@@ -14,7 +14,6 @@ angular.module('IDshare')
       animation: 'slide-in-up'
     }).then(function (modal) {
       $scope.modal = modal;
-      console.log($scope.modal)
     });
     $scope.openModal = function (key) {
       $scope.qrData = $localStorage.createdIds[key].qrdata;

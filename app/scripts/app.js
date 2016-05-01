@@ -8,7 +8,7 @@
 
 angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'firebase', 'ja.qr'])
 
-  .run(function ($ionicPlatform, $rootScope ,$localStorage) {
+  .run(function ($ionicPlatform, $rootScope ,$localStorage ,toast) {
 
     $ionicPlatform.ready(function () {
 
@@ -21,7 +21,20 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
       $localStorage.$default({
         scannedIds:{},
         createdIds:{}
-      })
+      });
+
+      $rootScope.onComplete = function(error) {
+        if (error) {
+          toast.show('Upload failed');
+        } else {
+          toast.show('Sync succeeded');
+        }
+      }
+
+      $rootScope.openURL = function(url){
+        cordova.InAppBrowser.open(url);
+      }
+
     });
 
 

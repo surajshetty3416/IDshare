@@ -2,12 +2,13 @@
 
 angular.module('IDshare')
   .controller('businessTemplateController', function ($scope, $cordovaImagePicker, $rootScope, FirebaseRef, professionList, $localStorage, uid, checkID, $state, toast) {
-
+    console.log(uid.get());
     $scope.getImage = function () {
       $cordovaImagePicker.getPictures($rootScope.options).then(function (result) {
 
         window.plugins.Base64.encodeFile(result[0], function (base64) {
           $scope.data.img = base64;
+          $scope.$apply();
         });
       }, function (error) {
         alert('Error: ' + JSON.stringify(error));
@@ -37,7 +38,7 @@ angular.module('IDshare')
 
     $scope.save = function (upload) {
       if (!checkData.status) {
-        var saveId = uid;
+        var saveId = uid.get();
         console.log(saveId);
         var type = 'business';
         var data = {
@@ -50,7 +51,10 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId].type = type;
         $localStorage.createdIds[saveId].qrdata = qrdata;
         if (upload)
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+        {
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
+
+        }
       }
       else {
         var type = 'business';
@@ -65,8 +69,9 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId] = $scope.data;
         $localStorage.createdIds[saveId].type = type;
         $localStorage.createdIds[saveId].qrdata = qrdata;
-        if (upload)
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+        if (upload){
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
+        }
 
       }
       $state.go('mainOption');

@@ -21,7 +21,7 @@ angular.module('IDshare')
     }
     $scope.save = function (upload) {
       if (!checkData.status) {
-        var saveId = uid;
+        var saveId = uid.get();
         console.log(saveId);
         var type = 'fr';
         var data = {
@@ -35,8 +35,10 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId].type = type;
         $localStorage.createdIds[saveId].qrdata = qrdata;
         $localStorage.createdIds[saveId].dob = $localStorage.createdIds[saveId].dob.toISOString();
-        if (upload)
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+        if (upload){
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
+
+        }
       }
       else {
         var type = 'fr';
@@ -54,7 +56,7 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId].qrdata = qrdata;
         $localStorage.createdIds[saveId].dob = $localStorage.createdIds[saveId].dob.toISOString();
         if (upload) {
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
         }
       }
       $state.go('mainOption');
@@ -66,6 +68,7 @@ angular.module('IDshare')
 
         window.plugins.Base64.encodeFile(result[0], function (base64) {
           $scope.data.img = base64;
+          $scope.$apply();
         });
       }, function (error) {
         alert('Error: ' + JSON.stringify(error));

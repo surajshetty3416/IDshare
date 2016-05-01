@@ -23,7 +23,7 @@ angular.module('IDshare')
     }
     $scope.save = function (upload) {
       if (!checkData.status) {
-        var saveId = uid;
+        var saveId = uid.get();
         console.log(saveId);
         var type = 'social';
         var data = {
@@ -36,7 +36,7 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId].type = type;
         $localStorage.createdIds[saveId].qrdata = qrdata;
         if (upload)
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
       }
       else {
         var type = 'social';
@@ -52,7 +52,7 @@ angular.module('IDshare')
         $localStorage.createdIds[saveId].type = type;
         $localStorage.createdIds[saveId].qrdata = qrdata;
         if (upload)
-          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId]);
+          FirebaseRef.child(saveId).set($localStorage.createdIds[saveId],$rootScope.onComplete);
       }
       $state.go('mainOption');
       toast.show("Saved Successfully");
@@ -63,6 +63,7 @@ angular.module('IDshare')
 
         window.plugins.Base64.encodeFile(result[0], function (base64) {
           $scope.data.img = base64;
+          $scope.$apply();
         });
       }, function (error) {
         alert('Error: ' + JSON.stringify(error));
