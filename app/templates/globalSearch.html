@@ -1,24 +1,17 @@
-<ion-view title="View IDs">
+<ion-view title="Global IDs">
   <ion-content class="has-header">
-    <ion-list>
-      <div ng-repeat="Id in Ids">
-        <ion-item class="item-stable" ng-click="!Id.items.length>0||toggleId(Id)" ng-class="{active: isIdShown(Id)}">
-          <i ng-if="Id.items.length>0" class="icon" ng-class="isIdShown(Id) ? 'ion-minus' : 'ion-plus'"></i>
-          &nbsp;
-          {{Id.name}}
-          <span class="badge badge-balanced" ng-if="Id.items.length>0">{{Id.items.length}}</span>
-        </ion-item>
-        <a class="item  item-accordion" ng-repeat="item in Id.items" ng-show="isIdShown(Id)" ng-click="show(item.key)">
-          <h2 class="padding-top">{{item.name | capitalize:true}}</h2>
+    <div class="list">
 
-          <p>{{item.mob || item.facebookID || item.email || item.profession}}</p>
-        </a>
-      </div>
-    </ion-list>
+      <a class="item item-avatar" ng-repeat="data in allData" ng-click="show(data.key)">
+        <img ng-src="{{data.img}}">
+        <h2>{{data.name}}</h2>
+        <p>{{data.mob || data.facebookID || data.email || data.profession}}</p>
+      </a>
 
 
-  </ion-content>
-</ion-view>
+    </div>
+   </ion-content>
+  </ion-view>
 
 
 <script id="viewSavedId.html" type="text/ng-template">
@@ -26,7 +19,6 @@
     <ion-header-bar>
       <button class="button button-clear button-assertive" align="right" ng-click="closeModal()">Done</button>
       <h1 class="title">ID</h1>
-      <button class="button button-small royal" ng-click="getData()"><i class="ion-android-download" align="left"> Get Data</i></button>
     </ion-header-bar>
     <ion-content>
       <div class="card list">
@@ -98,7 +90,7 @@
           </div>
           <div class="text-center padding" ng-if="data.mob || data.officeNo" >
 
-              <button class="button button-small button-balanced" ng-click="addContact()"><i class="ion-android-contact button-icon"></i>Add To Contact</button>
+            <button class="button button-small button-balanced" ng-click="addContact()"><i class="ion-android-contact button-icon"></i>Add To Contact</button>
 
 
           </div>

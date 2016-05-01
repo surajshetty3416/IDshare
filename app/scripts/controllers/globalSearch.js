@@ -1,42 +1,42 @@
 'use strict';
 
 angular.module('IDshare')
-  .controller('viewIdController', function ($scope, $localStorage, $ionicModal, FirebaseRef, $ionicLoading, toast, $ionicPopup) {
+  .controller('globalSearchController', function ($scope, FirebaseRef, $ionicModal,$ionicLoading) {
+    console.log("in");
+    //function search(index, type, searchTerm, callback) {
+    //  var reqRef = FirebaseRef.child('search/request').push({ index: index, type: type, query: searchTerm });
+    //
+    //  FirebaseRef.child('search/response/'+reqRef.key()).on('value', function fn(snap) {
+    //    if( snap.val() !== null ) {     // wait for data
+    //      snap.ref().off('value', fn); // stop listening
+    //      snap.ref().remove();         // clear the queue
+    //      callback(snap.val());
+    //    }
+    //  });
+    //}
+    //// invoke a search for *foo*
+    //search('firebase', 'name', 'Suraj Shetty', function(data) {
+    //  console.log('got back '+data.total+' hits');
+    //  if( data.hits ) {
+    //    data.hits.forEach(function(hit) {
+    //      console.log(hit);
+    //    });
+    //  }
+    //});
+    $ionicLoading.show();
+    FirebaseRef.once("value", function(snapshot){
+     $scope.allData={};
+        if(snapshot.exists()){
+          console.log(snapshot.val());
+          snapshot.forEach(function(child){
+            $scope.allData[child.key()]=child.val();
+            $scope.allData[child.key()].key=child.key();
+          });
+          $scope.$apply();
+          $ionicLoading.hide();
+        }
+    } );
 
-    $scope.Ids = [
-      {name: "Friends/Relatives IDs", items: []},
-      {name: "Social IDs", items: []},
-      {name: "Business IDs", items: []},
-      {name: "Custom IDs", items: []}
-    ];
-
-    Object.keys($localStorage.scannedIds).forEach(function (key) {
-      var data = $localStorage.scannedIds[key];
-      data.key = key;
-      if (data.type == "fr") {
-        $scope.Ids[0].items.push(data)
-      }
-      if (data.type == "social") {
-        $scope.Ids[1].items.push(data)
-      }
-      if (data.type == "business") {
-        $scope.Ids[2].items.push(data)
-      }
-      if (data.type == "custom") {
-        $scope.Ids[3].items.push(data)
-      }
-    });
-
-    $scope.toggleId = function (Id) {
-      if ($scope.isIdShown(Id)) {
-        $scope.shownId = null;
-      } else {
-        $scope.shownId = Id;
-      }
-    };
-    $scope.isIdShown = function (Id) {
-      return $scope.shownId === Id;
-    };
 
     $ionicModal.fromTemplateUrl('viewSavedId.html', {
       scope: $scope,
@@ -45,13 +45,12 @@ angular.module('IDshare')
       $scope.modal = modal;
     });
     $scope.show = function (key) {
-      $scope.data = $localStorage.scannedIds[key];
+      $scope.data = $scope.allData[key];
       $scope.modal.show();
     };
     $scope.closeModal = function () {
       $scope.modal.hide();
     };
-
     $scope.$on('$destroy', function () {
       $scope.modal.remove();
     });

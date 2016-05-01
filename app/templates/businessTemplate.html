@@ -43,13 +43,20 @@
         <i class="ion-earth  whatsapp col-10"></i>
         <input type="text" placeholder="Website" ng-model="data.website">
       </label>
+      <ion-checkbox ng-model="data.global" ng-click="log()">Global
+        <div class="padding" ng-if="data.global">
+          <code class="royal normal-wrap">* Setting global means this ID will be available on search list after you upload</code>
+        </div>
+      </ion-checkbox>
       <div align="right" class="padding">
         <button type="submit" class="button button-outline button-balanced button-small"
                 align="right" ng-click="save(false)">Save
         </button>
+
         <button type="submit" class="button button-outline button-energized button-small" align="right" ng-click="save(true)">Save and Upload
         </button>
       </div>
+
     </div>
     </form>
   </ion-content>

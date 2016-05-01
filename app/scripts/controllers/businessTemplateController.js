@@ -2,7 +2,6 @@
 
 angular.module('IDshare')
   .controller('businessTemplateController', function ($scope, $cordovaImagePicker, $rootScope, FirebaseRef, professionList, $localStorage, uid, checkID, $state, toast) {
-    console.log(uid.get());
     $scope.getImage = function () {
       $cordovaImagePicker.getPictures($rootScope.options).then(function (result) {
 
@@ -32,7 +31,8 @@ angular.module('IDshare')
         officeNo: null,
         linkedin: null,
         githubID: null,
-        website: null
+        website: null,
+        global:false
       };
     }
 
@@ -76,7 +76,9 @@ angular.module('IDshare')
       }
       $state.go('mainOption');
       toast.show("Saved Successfully");
-    }
+    };
+
+
 
 
   });

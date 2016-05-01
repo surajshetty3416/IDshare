@@ -72,7 +72,11 @@
       "id": "cordova-plugin-x-toast"
     },
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-contacts"
+    "cordova-plugin-contacts",
+    {
+      "locator": "https://github.com/Rohfosho/CordovaCallNumberPlugin.git",
+      "id": "mx.ferreyra.callnumber"
+    }
   ],
   "cordovaPlatforms": [
     "android"

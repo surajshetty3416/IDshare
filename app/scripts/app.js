@@ -32,7 +32,7 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
       }
 
       $rootScope.openURL = function(url){
-        cordova.InAppBrowser.open(url);
+        cordova.InAppBrowser.open(url ,'_blank', 'location=yes');
       }
 
     });
@@ -64,6 +64,11 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
         templateUrl: 'templates/viewId.html',
         controller: 'viewIdController',
         cache:false
+      })
+      .state('globalSearch', {
+        url: '/globalSearch',
+        templateUrl: 'templates/globalSearch.html',
+        controller: 'globalSearchController'
       })
       .state('friendsRelatives', {
         url: '/friendsRelatives',

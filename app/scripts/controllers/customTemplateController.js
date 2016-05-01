@@ -17,7 +17,8 @@ angular.module('IDshare')
         mob: null,
         dob: null,
         facebookId: null,
-        comments: null
+        comments: null,
+        global:false
       };
     }
 
