@@ -4,30 +4,29 @@
     </button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <div class="button-container">
-          <ul class="list">
-            <li class="item">
-              <button class="button button-large button-royal" id="giveButton" ng-click="scanQR()">
-                <i class="icon-left ion-qr-scanner padding-right"></i> Get ID
-              </button>
-            </li>
-            <li class="item">
-              <button class="button button-large button-balanced" id="getButton" ui-sref="giveId">
-              <i class="icon-left ion-arrow-up-a padding-right" ></i> Give ID
-              </button>
-            </li>
+    <ul class="list center">
+
+      <div class="disc-container padding">
+
+        <a class="disc center margin" id="giveButton" ng-click="scanQR()">
+          <!--<i class="icon-left ion-qr-scanner"></i>-->Get
+        </a>
+        <a class="disc center margin" id="getButton" ui-sref="giveId">
+          <!--<i class="icon-left ion-arrow-up-a " ></i>-->Give
+        </a>
+
+      </div>
 
             <li class="item">
-              <button class="button button-assertive" id="createId" ui-sref="createId">
-                <i class="icon-left ion-android-contact padding-right"></i>Create/Edit IDs
+              <button class="button button-balanced" id="createId" ui-sref="createId">
+                <i class="icon-left ion-compose padding-right"></i>Create/Edit IDs
               </button>
             </li>
             <li class="item">
-              <button class="button button-assertive" id="viewId" ui-sref="viewId">
+              <button class="button button-positive" id="viewId" ui-sref="viewId">
                 <i class="icon-left ion-android-contact padding-right"></i>View Scanned IDs
               </button>
             </li>
           </ul>
-   </div>
   </ion-content>
 </ion-view>

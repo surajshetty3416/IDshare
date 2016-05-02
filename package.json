@@ -5,7 +5,8 @@
   "description": "",
   "dependencies": {
     "gulp-jshint": "^2.0.0",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "beepbeep": "^1.2.0",

@@ -2,9 +2,9 @@
 
 angular.module('IDshare')
   .controller('globalSearchController', function ($scope, FirebaseRef, $ionicModal,$ionicLoading) {
-    console.log("in");
+    //console.log("in");
     //function search(index, type, searchTerm, callback) {
-    //  var reqRef = FirebaseRef.child('search/request').push({ index: index, type: type, query: searchTerm });
+    //  var reqRef = new Firebase("https://idshare1.firebaseio.com/").child('search/request').push({ index: index, type: type, query: searchTerm });
     //
     //  FirebaseRef.child('search/response/'+reqRef.key()).on('value', function fn(snap) {
     //    if( snap.val() !== null ) {     // wait for data
@@ -24,13 +24,16 @@ angular.module('IDshare')
     //  }
     //});
     $ionicLoading.show();
-    FirebaseRef.once("value", function(snapshot){
+    FirebaseRef.orderByChild("global").equalTo(true).once("value", function (snapshot) {
      $scope.allData={};
+      $scope.list = [];
         if(snapshot.exists()){
-          console.log(snapshot.val());
+          //console.log(snapshot.val());
           snapshot.forEach(function(child){
             $scope.allData[child.key()]=child.val();
             $scope.allData[child.key()].key=child.key();
+            $scope.list.push($scope.allData[child.key()]);
+            // console.log($scope.list);
           });
           $scope.$apply();
           $ionicLoading.hide();
@@ -78,12 +81,10 @@ angular.module('IDshare')
       function onSuccess(contact) {
         console.log(contact);
         toast.show("Contact Saved");
-      };
-
+      }
       function onError(contactError) {
         toast.show("Error = " + contactError.code);
-      };
-
+      }
       function createContact() {
         var newContact = navigator.contacts.create({"displayName": $scope.data.name});
         var phoneNumbers = [];

@@ -29,10 +29,10 @@ angular.module('IDshare', ['ionic', 'ngCordova', 'ngResource', 'ngStorage', 'fir
         } else {
           toast.show('Sync succeeded');
         }
-      }
+      };
 
       $rootScope.openURL = function(url){
-        cordova.InAppBrowser.open(url ,'_blank', 'location=yes');
+        cordova.InAppBrowser.open(url, '_system', 'location=yes');
       }
 
     });

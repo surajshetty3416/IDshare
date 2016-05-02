@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('IDshare')
 
   .factory('checkID', function($localStorage) {

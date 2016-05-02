@@ -1,11 +1,15 @@
 <ion-view title="Global IDs">
-  <ion-content class="has-header">
+  <ion-content class="has-header padding">
     <div class="list">
-
-      <a class="item item-avatar" ng-repeat="data in allData" ng-click="show(data.key)">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="search" autocomplete="on">
+      </label>
+      <a class="item item-avatar image-input" ng-repeat="data in list | filter:search" ng-click="show(data.key)">
         <img ng-src="{{data.img}}">
         <h2>{{data.name}}</h2>
-        <p>{{data.mob || data.facebookID || data.email || data.profession}}</p>
+
+        <p>{{data.profession || data.mob || data.facebookID || data.email}}</p>
       </a>
 
 
